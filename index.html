@@ -1,0 +1,199 @@
+import {
+    Stack,
+    Flex,
+    Button,
+    Text,
+    VStack,
+    useBreakpointValue,
+    } from '@chakra-ui/react';
+    import { Link } from 'react-router-dom';
+    export default function Home() {
+    return (
+    <Flex>
+    w={'full'}
+    h={'100vh'}
+    backgroundImage={
+    'url(https://media.istockphoto.com/photos/delhi-university-building-and-corridor-picture-i
+    d171271182?b=1&k=20&m=171271182&s=170667a&w=0&h=_Mj5FE_ZOZescLojulpJj
+    8l5QV3umTrbQH_BUga_Edw=)'
+    }
+    backgroundSize={'cover'}
+    backgroundPosition={'center center'}
+    >
+    <VStack
+    w={'full'}
+    justify={'center'}
+    px={useBreakpointValue({ base: 4, md: 8 })}
+    bgGradient={'linear(to-r, blackAlpha.600, transparent)'}
+    >
+    <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
+    <Text
+    color={'white'}
+    fontWeight={700}
+    lineHeight={1.2}
+    fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}
+    >
+    Vivekanand Education Society's Institute of Technology
+    </Text>
+    <Stack direction={'row'}>
+    <Button
+    bg={'blue.400'}
+    rounded={'full'}
+    color={'white'}
+    _hover={{ bg: 'blue.500' }}
+    onClick={() => {
+    window.location.href = 'https://vesit.ves.ac.in/';
+    }}
+    >
+    Main Site
+    </Button>
+    <Button
+    bg={'whiteAlpha.300'}
+    rounded={'full'}
+    color={'white'}
+    _hover={{ bg: 'whiteAlpha.500' }}
+    >
+    <Link to="/profile">Profile</Link>
+    </Button>
+    </Stack>
+    </Stack>
+    </VStack>
+    </Flex>
+    );
+    }
+    import {
+    Heading,
+    Avatar,
+    Box,
+    Center,
+    Text,
+    Stack,
+    Button,
+    Link,
+    Badge,
+    useColorModeValue,
+    } from '@chakra-ui/react';
+    export default function Profile() {
+    return (
+    <Center py={6}>
+    <Box
+    maxW={'320px'}
+    w={'full'}
+    bg={useColorModeValue('white', 'gray.900')}
+    boxShadow={'2xl'}
+    rounded={'lg'}
+    p={6}
+    textAlign={'center'}
+    >
+    <Avatar
+    size={'xl'}
+    src={'https://avatars0.githubusercontent.com/u/33479836?v=4'}
+    alt={'Avatar Alt'}
+    mb={4}
+    pos={'relative'}
+    _after={{
+    content: '""',
+    w: 4,
+    h: 4,
+    bg: 'green.300',
+    border: '2px solid white',
+    rounded: 'full',
+    pos: 'absolute',
+    bottom: 0,
+    right: 3,
+    }}
+    />
+    <Heading fontSize={'2xl'} fontFamily={'body'}>
+    Sahil Pabale
+    </Heading>
+    <Text fontWeight={600} color={'gray.500'} mb={4}>
+    @sahilpabale
+    </Text>
+    <Text
+    textAlign={'center'}
+    color={useColorModeValue('gray.700', 'gray.400')}
+    px={3}
+    >
+    Backend Engineer{' '}
+    <Link href={'#'} color={'blue.400'}>
+    #tag
+    </Link>{' '}
+    me in your posts
+    </Text>
+    <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
+    <Badge
+    px={2}
+    py={1}
+    bg={useColorModeValue('gray.50', 'gray.800')}
+    fontWeight={'400'}
+    >
+    #art
+    </Badge>
+    <Badge
+    px={2}
+    py={1}
+    bg={useColorModeValue('gray.50', 'gray.800')}
+    fontWeight={'400'}
+    >
+    #photography
+    </Badge>
+    <Badge
+    px={2}
+    py={1}
+    bg={useColorModeValue('gray.50', 'gray.800')}
+    fontWeight={'400'}
+    >
+    #music
+    </Badge>
+    </Stack>
+    <Stack mt={8} direction={'row'} spacing={4}>
+    <Button
+    flex={1}
+    fontSize={'sm'}
+    rounded={'full'}
+    _focus={{
+    bg: 'gray.200',
+    }}
+    >
+    Message
+    </Button>
+    <Button
+    flex={1}
+    fontSize={'sm'}
+    rounded={'full'}
+    bg={'blue.400'}
+    color={'white'}
+    boxShadow={
+    '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 /
+    43%)'
+    }
+    _hover={{
+    bg: 'blue.500',
+    }}
+    _focus={{
+    bg: 'blue.500',
+    }}
+    >
+    Follow
+    </Button>
+    </Stack>
+    </Box>
+    </Center>
+    );
+    }
+    import React from 'react';
+    import { ChakraProvider, theme } from '@chakra-ui/react';
+    import { Routes, Route } from 'react-router-dom';
+    import Home from './Home';
+    import Profile from './Profile';
+    function App() {
+    return (
+    <ChakraProvider theme={theme}>
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/profile" element={<Profile />} />
+    </Routes>
+    </ChakraProvider>
+    );
+    }
+    export default App;
